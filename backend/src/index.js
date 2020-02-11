@@ -10,9 +10,6 @@ mongoose.connect("mongodb://localhost:27017/sueca", {
 });
 requireDir("./models");
 
-app.get('/', (req, res) => {
-
-    res.send('Hello');
-});
+app.use('/', require('./routes'));
 
 app.listen(3001);
