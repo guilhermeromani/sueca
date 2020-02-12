@@ -1,11 +1,10 @@
-const mongoose = require('mongoose');
+const BaseController = require('./BaseController');
 
-const Card = mongoose.model('Card');
+class CardController extends BaseController {
 
-module.exports = {
-    async index(req, res) {
-        const cards = await Card.find();
-
-        return res.json(cards);
+    constructor() {
+        super("Card");
     }
-};
+}
+
+module.exports = CardController;
