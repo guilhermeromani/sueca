@@ -5,7 +5,7 @@ const UserSchema = new moongose.Schema({
         type: String,
         required: true
     },
-    description: {
+    cpf: {
         type: String,
         required: true
     }

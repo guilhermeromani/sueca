@@ -3,9 +3,10 @@ var _baseBusiness;
 class BaseController {
 
     constructor(controllerName) {
-        _baseBusiness = new (require('../business/BaseBusiness'))(controllerName);
+        var businessPath = "../business/" + controllerName + "Business";
+        _baseBusiness = new (require(businessPath));
     }
-    
+
     async list(req, res) {
         const result = await _baseBusiness.list();
         return res.json(result);
@@ -15,7 +16,7 @@ class BaseController {
         const result = await _baseBusiness.findById(req.params.id);
         return res.json(result);
     }
-    
+
     async create(req, res) {
         const result = await _baseBusiness.create(req.body);
         return res.json(result);
