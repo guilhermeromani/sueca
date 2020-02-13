@@ -1,9 +1,10 @@
 const BaseController = require('./BaseController');
+const UserBusiness = new (require('../business/UserBusiness'));
 
 class UserController extends BaseController {
 
     constructor() {
-        super("User");
+        super(UserBusiness);
     }
 }
 

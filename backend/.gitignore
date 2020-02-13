@@ -361,3 +361,8 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio,visualstudiocode
 log.txt
+
+# local env files
+.env
+.env.local
+.env.*.local

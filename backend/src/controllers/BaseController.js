@@ -1,10 +1,8 @@
 var _baseBusiness;
-
 class BaseController {
 
-    constructor(controllerName) {
-        var businessPath = "../business/" + controllerName + "Business";
-        _baseBusiness = new (require(businessPath));
+    constructor(instance) {
+        _baseBusiness = instance;
     }
 
     async list(req, res) {

@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const requireDir = require('require-dir');
+require('dotenv/config');
 
 const app = express();
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/sueca", {
+mongoose.connect(process.env.DATABASE_CONNECTION + "/" + process.env.DATABASE_NAME, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
