@@ -1,32 +1,32 @@
-var _baseBusiness;
 class BaseController {
 
     constructor(instance) {
-        _baseBusiness = instance;
+        this._baseBusiness = instance;
     }
 
     async list(req, res) {
-        const result = await _baseBusiness.list();
+        // const { page = 1 } = req.query;
+        const result = await this._baseBusiness.list();
         return res.json(result);
     }
 
     async findById(req, res) {
-        const result = await _baseBusiness.findById(req.params.id);
+        const result = await this._baseBusiness.findById(req.params.id);
         return res.json(result);
     }
 
     async create(req, res) {
-        const result = await _baseBusiness.create(req.body);
+        const result = await this._baseBusiness.create(req.body);
         return res.json(result);
     }
 
     async update(req, res) {
-        const result = await _baseBusiness.update(req.params.id, req.body);
+        const result = await this._baseBusiness.update(req.params.id, req.body);
         return res.json(result);
     }
 
     async delete(req, res) {
-        await _baseBusiness.delete(req.params.id);
+        await this._baseBusiness.delete(req.params.id);
         return res.send();
     }
 }

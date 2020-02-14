@@ -3,10 +3,11 @@ const mongoose = require('mongoose');
 class BaseRepository {
 
     constructor(model) {
-        this.model = mongoose.model(model);        
+        this.model = mongoose.model(model);
     }
 
     list() {
+        // return this.model.paginate({}, { page, limit: 10 });
         return this.model.find();
     }
 

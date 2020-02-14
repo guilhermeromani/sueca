@@ -1,5 +1,6 @@
-const BaseController = require('./BaseController');
-const CardBusiness = new (require('../business/CardBusiness'));
+const
+    BaseController = require('./BaseController'),
+    CardBusiness = new (require('../business/CardBusiness'));
 
 class CardController extends BaseController {
 

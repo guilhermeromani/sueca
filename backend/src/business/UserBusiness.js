@@ -1,9 +1,11 @@
-const BaseBusiness = require('./BaseBusiness');
+const
+    BaseBusiness = require('./BaseBusiness'),
+    UserRepository = new (require('../repository/UserRepository'));
 
 class UserBusiness extends BaseBusiness {
 
     constructor() {
-        super("User");
+        super(UserRepository);
     }
 
     list() {

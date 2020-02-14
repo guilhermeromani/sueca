@@ -2,28 +2,32 @@ var _baseRepository;
 
 class BaseBusiness {
 
-    constructor(repositoryName) {
-        _baseRepository = new (require('../repository/BaseRepository'))(repositoryName);
+    constructor(instance) {
+        this._baseRepository = instance;
+    }
+
+    showText() {
+        console.log("Essa é a BASE BUSINESS");
     }
 
     list() {
-        return _baseRepository.list();
+        return this._baseRepository.list();
     }
 
     findById(id) {
-        return _baseRepository.findById(id);
+        return this._baseRepository.findById(id);
     }
 
     create(data) {
-        return _baseRepository.create(data);
+        return this._baseRepository.create(data);
     }
     
     update(id, data) {
-        return _baseRepository.update(id, data);
+        return this._baseRepository.update(id, data);
     }
 
     delete(id) {
-        _baseRepository.delete(id);
+        this._baseRepository.delete(id);
     }
 }
 
