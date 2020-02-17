@@ -1,7 +1,6 @@
 const moongose = require('mongoose');
-const Card = require('./Card');
 const User = require('./User');
-const File = require('./File');
+const Image = require('./Image');
 
 const DeckSchema = new moongose.Schema({
     name: {
@@ -12,13 +11,13 @@ const DeckSchema = new moongose.Schema({
         type: Boolean,
         default: true
     },
-    owner: {
-        type: User,
+    owner_id: {
+        type: moongose.Schema.Types.ObjectId,
         required: true
     },
     description: String,
-    card_ids: [Card],
-    file: File
+    card_ids: [],
+    image: Image
 });
 
 moongose.model("Deck", DeckSchema);

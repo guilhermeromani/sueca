@@ -6,10 +6,6 @@ class BaseBusiness {
         this._baseRepository = instance;
     }
 
-    showText() {
-        console.log("Essa é a BASE BUSINESS");
-    }
-
     list() {
         return this._baseRepository.list();
     }

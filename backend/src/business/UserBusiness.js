@@ -8,9 +8,10 @@ class UserBusiness extends BaseBusiness {
         super(UserRepository);
     }
 
-    list() {
-        console.log('Vou listar todos os usuarios');
-        return super.list();
+    async addDeck(userId, deckId) {
+        var currentUser = await super.findById(userId);
+        currentUser.deck_ids.push(deckId);
+        return super.update(userId, currentUser);
     }
 }
 

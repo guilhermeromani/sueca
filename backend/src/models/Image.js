@@ -1,6 +1,6 @@
 const moongose = require('mongoose');
 
-const FileSchema = new moongose.Schema({
+const ImageSchema = new moongose.Schema({
     name: {
         type: String,
         required: true
@@ -13,4 +13,4 @@ const FileSchema = new moongose.Schema({
     extension: String
 });
 
-moongose.model("File", FileSchema);
+moongose.model("Image", ImageSchema);

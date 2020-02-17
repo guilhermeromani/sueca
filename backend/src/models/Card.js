@@ -1,6 +1,6 @@
 const moongose = require('mongoose');
 // const moongosePaginate = require('mongoose-paginate');
-const File = require('./File');
+const Image = require('./Image');
 
 const CardSchema = new moongose.Schema({
     name: {
@@ -11,7 +11,7 @@ const CardSchema = new moongose.Schema({
         type: String,
         required: true
     },
-    file: File
+    image: Image
 });
 
 // CardSchema.plugin(moongosePaginate);

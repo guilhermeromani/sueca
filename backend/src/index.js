@@ -14,6 +14,6 @@ mongoose.connect(process.env.DATABASE_CONNECTION + "/" + process.env.DATABASE_NA
 });
 requireDir("./models");
 
-app.use('/api', require('./routes'));
+app.use('/v1', require('./routes'));
 
 app.listen(process.env.PORT);
