@@ -12,13 +12,13 @@ const
 routes.get('/cards', (req, res) => { return new CardController().list(req, res); }); // Get Several Cards
 routes.get('/cards/:id', (req, res) => { return new CardController().findById(req, res); }); // Get a Card
 routes.put('/cards/:id', (req, res) => { return new CardController().update(req, res); });
+routes.get('/decks/:deck_id/cards', (req, res) => { return new CardController().getCards(req, res); }); // Get a Deck's Cards
 // routes.delete('/cards/:id', (req, res) => { return new CardController().delete(req, res); });
 //#endregion
 
 //#region DECKS
 routes.get('/decks/:id', (req, res) => { return new DeckController().findById(req, res); }); // Get a Deck
 routes.get('/decks', (req, res) => { return new DeckController().list(req, res); }); // Get Several Decks
-routes.get('/decks/:deck_id/cards', (req, res) => { return new DeckController().getCards(req, res); }); // Get a Deck's Cards
 routes.post('/users/:user_id/decks', (req, res) => { return new DeckController().create(req, res); }); // Create a Deck
 routes.put('/decks/:id', (req, res) => { return new DeckController().update(req, res); }); // Change a Deck's Details
 routes.post('/decks/:deck_id/cards', (req, res) => { return new DeckController().addCard(req, res); }); // Add a new Card to a Deck

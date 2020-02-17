@@ -1,8 +1,6 @@
 const
     BaseController = require('./BaseController'),
-    DeckBusiness = new (require('../business/DeckBusiness')),
-    UserBusiness = require('../business/UserBusiness'),
-    CardBusiness = require('../business/CardBusiness');
+    DeckBusiness = new (require('../business/DeckBusiness'));
 
 class DeckController extends BaseController {
 
@@ -18,40 +16,11 @@ class DeckController extends BaseController {
      * @param {String} deck.description - Value for deck description
      */
     async create(req, res) {
-        var newDeck = {};
-
-        var userBusiness = new UserBusiness();
-        var owner = await userBusiness.findById(req.params.user_id);
-
-        if (owner != null) {
-            newDeck.name = req.body.name;
-            newDeck.public = req.body.public;
-            newDeck.description = req.body.description;
-            newDeck.owner_id = owner.id;
-
-            var result = await DeckBusiness.create(newDeck);
-            var owner = await userBusiness.addDeck(owner.id, result.id);
-
+        var result = DeckBusiness.create(req.body, req.params.user_id);
+        if (result != null)
             return res.json(result);
-
-        }
-        return res.status(403);
-    }
-
-    /**
-     * Get full details of the cards of a deck owned by an user.
-     */
-    async getCards(req, res) {
-        var cardBusiness = new CardBusiness();
-        var cards = [];
-
-        var deck = DeckBusiness.findById(req.params.deck_id);
-        deck.card_ids.forEach(element => {
-            var card = cardBusiness.findById(element);
-            if (card != null) cards.push(card);
-        });
-
-        return res.status(200).json(cards);
+        else
+            return res.status(403).send();
     }
 
     /**
@@ -61,13 +30,11 @@ class DeckController extends BaseController {
      * @param {String} card.description - Value for card description
      */
     async addCard(req, res) {
-        var cardBusiness = new CardBusiness();
-        var newCard = await cardBusiness.create(req.body);
-
-        var deck = super.findById(req.params.deck_id);
-        deck.card_ids.push(newCard.id);
-
-        return res.status(201).send();
+        var result = DeckBusiness.addCard(req.body, req.params.deck_id);
+        if (result != null)
+            return res.status(200).send();
+        else
+            return res.status(403).send();
     }
 }
 
